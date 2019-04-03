@@ -2,6 +2,7 @@
 
 import os
 import click
+import logging
 
 pluginFolder = os.path.join(os.path.dirname(__file__), 'commands')
 
@@ -27,4 +28,5 @@ cli = MyCLI(help='This tool\'s subcommands are loaded from a '
             'plugin folder dynamically.')
 
 if __name__ == '__main__':
-    cli()
+	logging.basicConfig(level=logging.DEBUG)
+	cli()

@@ -1,9 +1,6 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from database.MysqlEngine import db
 
-Base = declarative_base()
-
-class Ingredient(Base):
+class Ingredient(db.Model):
 	__tablename__ = 'ingredients'
-    id = Column(Integer, primary_key=True)
-    name =  Column(String(100))
+	id = db.Column(db.Integer, primary_key=True)
+	name =  db.Column(db.String(100))

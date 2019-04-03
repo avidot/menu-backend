@@ -1,17 +1,16 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from database.MysqlEngine import db
 
-Base = declarative_base()
 
-association_table = Table('recipes_ingredients', Base.metadata,
-    Column('id_recipe', Integer, ForeignKey('recipes.id')),
-    Column('id_ingredient', Integer, ForeignKey('ingredients.id')),
-    Column('amount', Integer),
-    Column('unit', String(50))
+recipes_ingredients = db.Table('recipes_ingredients',
+    db.Column('recipe_id', db.Integer, db.ForeignKey('recipes.id'), primary_key=True),
+    db.Column('ingredient_id', db.Integer, db.ForeignKey('ingredients.id'), primary_key=True),
+	db.Column('amount', db.Integer),
+	db.Column('unit', db.String(50))
 )
 
-class Recipe(Base):
+class Recipe(db.Model):
 	__tablename__ = 'recipes'
-    id = Column(Integer, primary_key=True)
-    name =  Column(String(100))
-    ingredients = relationship("Ingredient", secondary=association_table)
+	id = db.Column(db.Integer, primary_key=True)
+	name =  db.Column(db.String(100))
+	ingredients = db.relationship('Ingredient', secondary=recipes_ingredients, lazy='subquery',
+        backref=db.backref('recipes', lazy=True))

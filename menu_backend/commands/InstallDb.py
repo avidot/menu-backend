@@ -2,13 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import click
-from utils.GetFlaskApp import getFlaskApp
-from database.MysqlEngine import MysqlEngine
+from database.MysqlEngine import db
+from model.Recipe import Recipe
+from model.Ingredient import Ingredient
 
 @click.command()
 def cli():
-	app = getFlaskApp()
-
-	test = MysqlEngine()
-	test.setFlaskApp(app)
-	test.db.create_all()
+	db.create_all()
+	click.echo("test")
