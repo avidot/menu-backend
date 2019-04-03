@@ -1,18 +1,30 @@
 # -*- coding: utf-8 -*-
 
-"""Console script for menu_backend."""
-import sys
+import os
 import click
 
+pluginFolder = os.path.join(os.path.dirname(__file__), 'commands')
 
-@click.command()
-def main(args=None):
-    """Console script for menu_backend."""
-    click.echo("Replace this message by putting your code into "
-               "menu_backend.cli.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
-    return 0
+class MyCLI(click.MultiCommand):
 
+    def list_commands(self, ctx):
+        rv = []
+        for filename in os.listdir(pluginFolder):
+            if filename.endswith('.py'):
+                rv.append(filename[:-3])
+        rv.sort()
+        return rv
 
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+    def get_command(self, ctx, name):
+        ns = {}
+        fn = os.path.join(pluginFolder, name + '.py')
+        with open(fn) as f:
+            code = compile(f.read(), fn, 'exec')
+            eval(code, ns, ns)
+        return ns['cli']
+
+cli = MyCLI(help='This tool\'s subcommands are loaded from a '
+            'plugin folder dynamically.')
+
+if __name__ == '__main__':
+    cli()
