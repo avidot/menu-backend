@@ -28,5 +28,6 @@ cli = MyCLI(help='This tool\'s subcommands are loaded from a '
             'plugin folder dynamically.')
 
 if __name__ == '__main__':
-	logging.basicConfig(level=logging.DEBUG)
+	FORMAT = '%(asctime)-15s - %(levelname)s - %(message)s'
+	logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 	cli()
