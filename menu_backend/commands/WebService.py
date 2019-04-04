@@ -1,15 +1,42 @@
-""" Command WebService : Use for install the database structure """
+""" Command WebService : Use for manage recipes operations """
 # -*- coding: utf-8 -*-
 
 import click
-from database.MysqlEngine import MysqlEngine
-from utils.GetFlaskApp import getFlaskApp
+import json
+from flask import request, Response
+from utils.commons import app
+from database.DatabaseEngine import db
+from model.Recipe import Recipe
+from database.RecipeController import addRecipe
+
+
+@app.route('/recipes', methods=['GET', 'POST'])
+def manageAllRecipes():
+	if request.method == 'GET':
+		allRecipes = Recipe.query.order_by(Recipe.name).all()
+		allRecipesDict = [r.getRecipeDict() for r in allRecipes]
+		print(type(allRecipesDict))
+		print(allRecipesDict)
+		js = json.dumps(allRecipesDict)
+		resp = Response(js, status=200, mimetype='application/json')
+		return resp
+	else:
+		addRecipe(request.json)
+		return "Create recipe"
+
+@app.route('/recipes/<recipeId>', methods=['PUT', 'DELETE'])
+def manageRecipe(recipeId):
+	recipeToManage = Recipe.query.filter_by(id=recipeId).first()
+	if recipeToManage:
+		if request.method == 'PUT':
+			print("Update recipe")
+			return json.dumps(Recipe.query.order_by(Recipe.name).all())
+		else:
+			db.session.delete(recipeToManage)
+			db.session.commit()
+			return "Create recipe"
 
 @click.command()
-def cli():
-	app = getFlaskApp()
-
-	test = MysqlEngine()
-	test.setFlaskApp(app)
-
-	click.echo(test.db)
+def startWebService():
+	click.echo("Start WebService")
+	app.run(debug=True)

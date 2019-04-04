@@ -3,12 +3,12 @@
 
 import click
 import logging
-from database.MysqlEngine import db
+from database.DatabaseEngine import db
 from model.Recipe import Recipe
 from model.Ingredient import Ingredient
+from model.RecipeIngredient import RecipeIngredient
 
 @click.command()
-def cli():
+def installDb():
 	logging.info("Start create database structure")
 	db.create_all()
-	click.echo("test")
