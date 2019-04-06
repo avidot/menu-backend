@@ -5,8 +5,7 @@ from database.DatabaseEngine import db
 
 class Recipe(db.Model):
 	__tablename__ = 'recipes'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name =  db.Column(db.String(100))
+	name =  db.Column(db.String(100), primary_key=True)
 	ingredients = db.relationship('Ingredient', secondary="recipes_ingredients", lazy='subquery',
         backref=db.backref('recipes', lazy=True))
 
@@ -14,8 +13,13 @@ class Recipe(db.Model):
 		recipe = {}
 		recipe["name"] = self.name
 		recipe["ingredients"] = []
-		for ingredient in self.ingredients:
-			ingedientJson = {}
-			ingedientJson["name"] = ingredient.name
-			recipe["ingredients"].append(ingedientJson)
+		for recipeIngredient in self.recipe_link:
+			for ingredient in self.ingredients:
+				if ingredient.name == recipeIngredient.ingredient_name:
+					ingedientJson = {}
+					ingedientJson["name"] = ingredient.name
+					ingedientJson["category"] = ingredient.category.value
+					ingedientJson["amount"] = recipeIngredient.amount
+					ingedientJson["unit"] = recipeIngredient.unit.value
+					recipe["ingredients"].append(ingedientJson)
 		return recipe

@@ -4,6 +4,7 @@
 from database.DatabaseEngine import db
 from model.Recipe import Recipe
 from model.RecipeIngredient import RecipeIngredient
+from model.UnitEnum import UnitEnum
 from database.IngredientController import addIngredient, getIngredient
 
 def addRecipe(recipeJson):
@@ -13,6 +14,7 @@ def addRecipe(recipeJson):
 		if not newIngredient:
 			newIngredient = addIngredient(ingredient)
 		recipeIngredientLink = RecipeIngredient(recipe=recipe,ingredient=newIngredient, amount=ingredient["amount"], 
-			unit=ingredient["unit"])
+			unit=UnitEnum(ingredient["unit"]))
 		db.session.add(recipeIngredientLink)
+	db.session.add(recipe)
 	db.session.commit()
