@@ -7,10 +7,6 @@
 import unittest
 from click.testing import CliRunner
 
-from menu_backend import menu_backend
-from menu_backend import cli
-
-
 class TestMenu_backend(unittest.TestCase):
     """Tests for `menu_backend` package."""
 
@@ -19,9 +15,6 @@ class TestMenu_backend(unittest.TestCase):
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
-
-    def test_000_something(self):
-        """Test something."""
 
     def test_command_line_interface(self):
         """Test the CLI."""
