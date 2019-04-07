@@ -11,3 +11,13 @@ def addMenu(menuJson):
 		recipe_name=menuJson["recipeName"])
 	db.session.add(menu)
 	db.session.commit()
+
+def updateMenu(menuDay, menuMeal, menuJson):
+	menuToManage = Menu.query.filter_by(day=DayEnum(menuDay), meal=MealEnum(menuMeal)).first()
+	menuToManage.recipe_name = menuJson["recipeName"]
+	db.session.commit()
+
+def deleteMenu(menuDay, menuMeal):
+	menuToManage = Menu.query.filter_by(day=DayEnum(menuDay), meal=MealEnum(menuMeal)).first()
+	db.session.delete(menuToManage)
+	db.session.commit()

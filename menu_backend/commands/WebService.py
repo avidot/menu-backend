@@ -9,7 +9,7 @@ from database.DatabaseEngine import db
 from model.Menu import Menu
 from model.Recipe import Recipe
 from database.RecipeController import addRecipe, deleteRecipe, updateRecipe
-from database.MenuController import addMenu
+from database.MenuController import addMenu, deleteMenu, updateMenu
 
 
 @app.route('/recipes', methods=['GET', 'POST'])
@@ -47,6 +47,17 @@ def manageAllMenus():
 	else:
 		addMenu(request.json)
 		resp = Response(status=201)
+		return resp
+
+@app.route('/menus/<menuDay>-<menuMeal>', methods=['PUT', 'DELETE'])
+def manageMenu(menuDay, menuMeal):
+	if request.method == 'PUT':
+		updateMenu(menuDay, menuMeal, request.json)
+		resp = Response(status=204)
+		return resp
+	else:
+		deleteMenu(menuDay, menuMeal)
+		resp = Response(status=204)
 		return resp
 
 @click.command()
