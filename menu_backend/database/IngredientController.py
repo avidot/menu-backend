@@ -11,6 +11,7 @@ def getIngredient(ingredientName):
 def addIngredient(ingredientJson):
 	if not getIngredient(ingredientJson["name"]):
 		ingredient = Ingredient(name=ingredientJson["name"], category=IngredientCategoryEnum(ingredientJson["category"]))
+		db.session.add(ingredient)
 		db.session.commit()
 		return ingredient
 	return None

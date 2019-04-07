@@ -8,7 +8,7 @@ from utils.commons import app
 from database.DatabaseEngine import db
 from model.Menu import Menu
 from model.Recipe import Recipe
-from database.RecipeController import addRecipe
+from database.RecipeController import addRecipe, deleteRecipe, updateRecipe
 from database.MenuController import addMenu
 
 
@@ -25,17 +25,16 @@ def manageAllRecipes():
 		resp = Response(status=201)
 		return resp
 
-@app.route('/recipes/<recipeId>', methods=['PUT', 'DELETE'])
-def manageRecipe(recipeId):
-	recipeToManage = Recipe.query.filter_by(id=recipeId).first()
-	if recipeToManage:
-		if request.method == 'PUT':
-			print("Update recipe")
-			return json.dumps(Recipe.query.order_by(Recipe.name).all())
-		else:
-			db.session.delete(recipeToManage)
-			db.session.commit()
-			return "Create recipe"
+@app.route('/recipes/<recipeName>', methods=['PUT', 'DELETE'])
+def manageRecipe(recipeName):
+	if request.method == 'PUT':
+		updateRecipe(recipeName, request.json)
+		resp = Response(status=204)
+		return resp
+	else:
+		deleteRecipe(recipeName)
+		resp = Response(status=204)
+		return resp
 
 @app.route('/menus', methods=['GET', 'POST'])
 def manageAllMenus():

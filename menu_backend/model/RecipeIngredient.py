@@ -7,6 +7,3 @@ class RecipeIngredient(db.Model):
 	ingredient_name = db.Column(db.String(100), db.ForeignKey('ingredients.name'), primary_key=True)
 	amount =  db.Column(db.Integer)
 	unit =  db.Column(db.Enum(UnitEnum))
-	
-	recipe = db.relationship("Recipe", backref="recipe_link")
-	ingredient = db.relationship("Ingredient", backref="ingredient_link")

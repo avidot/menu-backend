@@ -6,7 +6,7 @@ from database.DatabaseEngine import db
 class Recipe(db.Model):
 	__tablename__ = 'recipes'
 	name =  db.Column(db.String(100), primary_key=True)
-	ingredients = db.relationship('Ingredient', secondary="recipes_ingredients", lazy='subquery',
+	ingredients = db.relationship('Ingredient', secondary="recipes_ingredients",
         backref=db.backref('recipes', lazy=True))
 
 	def getRecipeDict(self):
