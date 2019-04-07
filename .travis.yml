@@ -2,26 +2,29 @@ language: python
 
 python: 3.7-dev
 
-env:
-  - TOXENV=py37
-
-install: pip install -r requirements_dev.txt
+install: pip install -U tox-travis
 
 script: tox -e ${TOXENV}
 
 
 deploy:
   - provider: pypi
+    distributions: sdist bdist_wheel
     server: https://upload.pypi.org/legacy/
     on:
       branch: master
+      repo : avidot/menu_backend
+      python: 3.7
     user: avidot
     password:
-      secure: "PuqL86SJVgWtN+zp4gCmnUENvhqqeRJfm8tm8r1ft8WvCS0vVi++ZnzTu59tpA1Qz7hB14yh1ufBClUglXqQfG1lu2obQhRgFS41xrpPw7ZpKXu4PI1KzHw3U4bkv3WIf9invadUXc2eg3OTEHi9DUwJzsJBjv82L5tItE5qy2x2Te/qtcfVylO/TXx/ZSCucILCATDKEH+CavSNztRu72/IAxfbxrjtFtphXsGKd/FFPxhSQKQtOwVO6lNmN1fCtB56b3/nSXBS0h6HPUDvDOasWDtZ74saoHx3MUuMVLC8+Ooq08cJeKXG+ULwAys2bJfBUL2ajKzhpqWDgY1kimfj50KfJd9r2Y7H3v80P2rlwx5Y86oIvpzAndaqXxPS98nRl/Fg+2Pb6QfkjtuQ4Ul4H4Qt9uZ9zXyGNIWqEeaL4CxvfjMg7D+tXqlG7LXOPhnsrr5aYRpS8KtAVTxkaO1EaGMKY/kxZDerL0KpYexpjxhjXB/RWFuG51c6M4zik0WcaJ0K0sPANLxsI8KcpIw83gQ0b55QhfnuW3mqGZ45VvfbWXPVAmg43Hn7C1KWk7AVZ4ii+Qv4WFPpbZPZdAh/m6lCS0cVXnB/s7uwEgtSsObgaEvqm4Saam1Yj+7Bcq5xrVSotL4CHjlDNYUcaCA0GLJWsuo5G7L5fOXUfKk="
+      secure: PuqL86SJVgWtN+zp4gCmnUENvhqqeRJfm8tm8r1ft8WvCS0vVi++ZnzTu59tpA1Qz7hB14yh1ufBClUglXqQfG1lu2obQhRgFS41xrpPw7ZpKXu4PI1KzHw3U4bkv3WIf9invadUXc2eg3OTEHi9DUwJzsJBjv82L5tItE5qy2x2Te/qtcfVylO/TXx/ZSCucILCATDKEH+CavSNztRu72/IAxfbxrjtFtphXsGKd/FFPxhSQKQtOwVO6lNmN1fCtB56b3/nSXBS0h6HPUDvDOasWDtZ74saoHx3MUuMVLC8+Ooq08cJeKXG+ULwAys2bJfBUL2ajKzhpqWDgY1kimfj50KfJd9r2Y7H3v80P2rlwx5Y86oIvpzAndaqXxPS98nRl/Fg+2Pb6QfkjtuQ4Ul4H4Qt9uZ9zXyGNIWqEeaL4CxvfjMg7D+tXqlG7LXOPhnsrr5aYRpS8KtAVTxkaO1EaGMKY/kxZDerL0KpYexpjxhjXB/RWFuG51c6M4zik0WcaJ0K0sPANLxsI8KcpIw83gQ0b55QhfnuW3mqGZ45VvfbWXPVAmg43Hn7C1KWk7AVZ4ii+Qv4WFPpbZPZdAh/m6lCS0cVXnB/s7uwEgtSsObgaEvqm4Saam1Yj+7Bcq5xrVSotL4CHjlDNYUcaCA0GLJWsuo5G7L5fOXUfKk=
   - provider: pypi
+    distributions: sdist bdist_wheel
     server: https://test.pypi.org/legacy/
     on:
       branch: develop
+      repo : avidot/menu_backend
+      python: 3.7
     user: avidot
     password:
-      secure: "PuqL86SJVgWtN+zp4gCmnUENvhqqeRJfm8tm8r1ft8WvCS0vVi++ZnzTu59tpA1Qz7hB14yh1ufBClUglXqQfG1lu2obQhRgFS41xrpPw7ZpKXu4PI1KzHw3U4bkv3WIf9invadUXc2eg3OTEHi9DUwJzsJBjv82L5tItE5qy2x2Te/qtcfVylO/TXx/ZSCucILCATDKEH+CavSNztRu72/IAxfbxrjtFtphXsGKd/FFPxhSQKQtOwVO6lNmN1fCtB56b3/nSXBS0h6HPUDvDOasWDtZ74saoHx3MUuMVLC8+Ooq08cJeKXG+ULwAys2bJfBUL2ajKzhpqWDgY1kimfj50KfJd9r2Y7H3v80P2rlwx5Y86oIvpzAndaqXxPS98nRl/Fg+2Pb6QfkjtuQ4Ul4H4Qt9uZ9zXyGNIWqEeaL4CxvfjMg7D+tXqlG7LXOPhnsrr5aYRpS8KtAVTxkaO1EaGMKY/kxZDerL0KpYexpjxhjXB/RWFuG51c6M4zik0WcaJ0K0sPANLxsI8KcpIw83gQ0b55QhfnuW3mqGZ45VvfbWXPVAmg43Hn7C1KWk7AVZ4ii+Qv4WFPpbZPZdAh/m6lCS0cVXnB/s7uwEgtSsObgaEvqm4Saam1Yj+7Bcq5xrVSotL4CHjlDNYUcaCA0GLJWsuo5G7L5fOXUfKk="
+      secure: PuqL86SJVgWtN+zp4gCmnUENvhqqeRJfm8tm8r1ft8WvCS0vVi++ZnzTu59tpA1Qz7hB14yh1ufBClUglXqQfG1lu2obQhRgFS41xrpPw7ZpKXu4PI1KzHw3U4bkv3WIf9invadUXc2eg3OTEHi9DUwJzsJBjv82L5tItE5qy2x2Te/qtcfVylO/TXx/ZSCucILCATDKEH+CavSNztRu72/IAxfbxrjtFtphXsGKd/FFPxhSQKQtOwVO6lNmN1fCtB56b3/nSXBS0h6HPUDvDOasWDtZ74saoHx3MUuMVLC8+Ooq08cJeKXG+ULwAys2bJfBUL2ajKzhpqWDgY1kimfj50KfJd9r2Y7H3v80P2rlwx5Y86oIvpzAndaqXxPS98nRl/Fg+2Pb6QfkjtuQ4Ul4H4Qt9uZ9zXyGNIWqEeaL4CxvfjMg7D+tXqlG7LXOPhnsrr5aYRpS8KtAVTxkaO1EaGMKY/kxZDerL0KpYexpjxhjXB/RWFuG51c6M4zik0WcaJ0K0sPANLxsI8KcpIw83gQ0b55QhfnuW3mqGZ45VvfbWXPVAmg43Hn7C1KWk7AVZ4ii+Qv4WFPpbZPZdAh/m6lCS0cVXnB/s7uwEgtSsObgaEvqm4Saam1Yj+7Bcq5xrVSotL4CHjlDNYUcaCA0GLJWsuo5G7L5fOXUfKk=
