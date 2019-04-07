@@ -16,14 +16,14 @@ script: tox -e ${TOXENV}
 
 deploy:
 - provider: pypi
-  server: https://pypi.python.org/pypi
+  server: https://upload.pypi.org/legacy/
   on:
     branch: master
   user: avidot
   password:
     secure: "DIaM/0PB1W52fZjeDcOGC9vIzqFr7P8GtFYd6Gu1idTshzoTfW3HOfKMbBHJkg1Q0TgGy8URJGQ2FKmDJHPnJRjViUyWjsHX4zBAKEyzu06o9ZVj+yhCh6NUsSQonFAfr2emt1gxiAklIWE4ZzU0U4aiZPxAf4oNAAKJnRvQ2aOhYPZ4fkQ7XVXCGuskjvk0kUn64cWHGAsZ0iChNiemcuhFbrVrYyL3H0m9bJO/N+we98LB/WjIDPLHWc/pinmoshJPi9cjO2VoopNn0DaPnApOCHxQzZiLGQ+s0b/tAg62dL4le3l/jCPQS/3ZM+uh6GGqgzG/r6bM6yZ4VyZd2IerhajFOEeqJyu4K4uinPdG10qd/Kmh/kyee+Ustb0Wv/w7SQPlbjo8o52KatBlt1mKsCjDbi5cctj0Ady2q5gD7Ep0anfsge3hOTf4RWdpBEeURPKn1BErRVwwkQP8gApFHHTC8dT2XO4UY4H/9n/bv6AQImRWtf8yalVEHQkUKJ98aRigV40nmjdzbzD8YulUQ9QxKGL//GijlE5W+F9wK+ULE/lTQ5NqlvrziKanM+vmQxR1XUHJ079a8Pq/qkGE/O7Cdko1E5EUPRyj5weGqBe0KAIK+R0o+RTfv2umMUaQRWTq8ESlTwLYqhgMc9sggYjtw0IejBIXMZ712h0="
 - provider: pypi
-  server: https://testpypi.python.org/pypi
+  server: https://test.pypi.org/legacy/
   on:
     branch: develop
   user: avidot
