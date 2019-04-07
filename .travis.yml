@@ -1,31 +1,23 @@
-# Config file for automatic testing at travis-ci.org
-# This file will be regenerated if you run travis_pypi_setup.py
-
 dist: xenial
 language: python
-python: "3.7-dev"
-
+python: 3.7-dev
 env:
-  - TOXENV=py37
-
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+- TOXENV=py37
 install: pip install -r requirements_dev.txt
-
-# command to run tests, e.g. python setup.py test
 script: tox -e ${TOXENV}
-
 deploy:
-- provider: pypi
-  server: https://upload.pypi.org/legacy/
-  on:
-    branch: master
-  user: avidot
-  password:
-    secure: "DIaM/0PB1W52fZjeDcOGC9vIzqFr7P8GtFYd6Gu1idTshzoTfW3HOfKMbBHJkg1Q0TgGy8URJGQ2FKmDJHPnJRjViUyWjsHX4zBAKEyzu06o9ZVj+yhCh6NUsSQonFAfr2emt1gxiAklIWE4ZzU0U4aiZPxAf4oNAAKJnRvQ2aOhYPZ4fkQ7XVXCGuskjvk0kUn64cWHGAsZ0iChNiemcuhFbrVrYyL3H0m9bJO/N+we98LB/WjIDPLHWc/pinmoshJPi9cjO2VoopNn0DaPnApOCHxQzZiLGQ+s0b/tAg62dL4le3l/jCPQS/3ZM+uh6GGqgzG/r6bM6yZ4VyZd2IerhajFOEeqJyu4K4uinPdG10qd/Kmh/kyee+Ustb0Wv/w7SQPlbjo8o52KatBlt1mKsCjDbi5cctj0Ady2q5gD7Ep0anfsge3hOTf4RWdpBEeURPKn1BErRVwwkQP8gApFHHTC8dT2XO4UY4H/9n/bv6AQImRWtf8yalVEHQkUKJ98aRigV40nmjdzbzD8YulUQ9QxKGL//GijlE5W+F9wK+ULE/lTQ5NqlvrziKanM+vmQxR1XUHJ079a8Pq/qkGE/O7Cdko1E5EUPRyj5weGqBe0KAIK+R0o+RTfv2umMUaQRWTq8ESlTwLYqhgMc9sggYjtw0IejBIXMZ712h0="
-- provider: pypi
-  server: https://test.pypi.org/legacy/
-  on:
-    branch: develop
-  user: avidot
-  password:
-    secure: "DIaM/0PB1W52fZjeDcOGC9vIzqFr7P8GtFYd6Gu1idTshzoTfW3HOfKMbBHJkg1Q0TgGy8URJGQ2FKmDJHPnJRjViUyWjsHX4zBAKEyzu06o9ZVj+yhCh6NUsSQonFAfr2emt1gxiAklIWE4ZzU0U4aiZPxAf4oNAAKJnRvQ2aOhYPZ4fkQ7XVXCGuskjvk0kUn64cWHGAsZ0iChNiemcuhFbrVrYyL3H0m9bJO/N+we98LB/WjIDPLHWc/pinmoshJPi9cjO2VoopNn0DaPnApOCHxQzZiLGQ+s0b/tAg62dL4le3l/jCPQS/3ZM+uh6GGqgzG/r6bM6yZ4VyZd2IerhajFOEeqJyu4K4uinPdG10qd/Kmh/kyee+Ustb0Wv/w7SQPlbjo8o52KatBlt1mKsCjDbi5cctj0Ady2q5gD7Ep0anfsge3hOTf4RWdpBEeURPKn1BErRVwwkQP8gApFHHTC8dT2XO4UY4H/9n/bv6AQImRWtf8yalVEHQkUKJ98aRigV40nmjdzbzD8YulUQ9QxKGL//GijlE5W+F9wK+ULE/lTQ5NqlvrziKanM+vmQxR1XUHJ079a8Pq/qkGE/O7Cdko1E5EUPRyj5weGqBe0KAIK+R0o+RTfv2umMUaQRWTq8ESlTwLYqhgMc9sggYjtw0IejBIXMZ712h0="
+  matrix:
+  - provider: pypi
+    server: https://upload.pypi.org/legacy/
+    on:
+      branch: master
+    user: avidot
+    password:
+      secure: PuqL86SJVgWtN+zp4gCmnUENvhqqeRJfm8tm8r1ft8WvCS0vVi++ZnzTu59tpA1Qz7hB14yh1ufBClUglXqQfG1lu2obQhRgFS41xrpPw7ZpKXu4PI1KzHw3U4bkv3WIf9invadUXc2eg3OTEHi9DUwJzsJBjv82L5tItE5qy2x2Te/qtcfVylO/TXx/ZSCucILCATDKEH+CavSNztRu72/IAxfbxrjtFtphXsGKd/FFPxhSQKQtOwVO6lNmN1fCtB56b3/nSXBS0h6HPUDvDOasWDtZ74saoHx3MUuMVLC8+Ooq08cJeKXG+ULwAys2bJfBUL2ajKzhpqWDgY1kimfj50KfJd9r2Y7H3v80P2rlwx5Y86oIvpzAndaqXxPS98nRl/Fg+2Pb6QfkjtuQ4Ul4H4Qt9uZ9zXyGNIWqEeaL4CxvfjMg7D+tXqlG7LXOPhnsrr5aYRpS8KtAVTxkaO1EaGMKY/kxZDerL0KpYexpjxhjXB/RWFuG51c6M4zik0WcaJ0K0sPANLxsI8KcpIw83gQ0b55QhfnuW3mqGZ45VvfbWXPVAmg43Hn7C1KWk7AVZ4ii+Qv4WFPpbZPZdAh/m6lCS0cVXnB/s7uwEgtSsObgaEvqm4Saam1Yj+7Bcq5xrVSotL4CHjlDNYUcaCA0GLJWsuo5G7L5fOXUfKk=
+  - provider: pypi
+    server: https://test.pypi.org/legacy/
+    on:
+      branch: develop
+    user: avidot
+    password:
+      secure: PuqL86SJVgWtN+zp4gCmnUENvhqqeRJfm8tm8r1ft8WvCS0vVi++ZnzTu59tpA1Qz7hB14yh1ufBClUglXqQfG1lu2obQhRgFS41xrpPw7ZpKXu4PI1KzHw3U4bkv3WIf9invadUXc2eg3OTEHi9DUwJzsJBjv82L5tItE5qy2x2Te/qtcfVylO/TXx/ZSCucILCATDKEH+CavSNztRu72/IAxfbxrjtFtphXsGKd/FFPxhSQKQtOwVO6lNmN1fCtB56b3/nSXBS0h6HPUDvDOasWDtZ74saoHx3MUuMVLC8+Ooq08cJeKXG+ULwAys2bJfBUL2ajKzhpqWDgY1kimfj50KfJd9r2Y7H3v80P2rlwx5Y86oIvpzAndaqXxPS98nRl/Fg+2Pb6QfkjtuQ4Ul4H4Qt9uZ9zXyGNIWqEeaL4CxvfjMg7D+tXqlG7LXOPhnsrr5aYRpS8KtAVTxkaO1EaGMKY/kxZDerL0KpYexpjxhjXB/RWFuG51c6M4zik0WcaJ0K0sPANLxsI8KcpIw83gQ0b55QhfnuW3mqGZ45VvfbWXPVAmg43Hn7C1KWk7AVZ4ii+Qv4WFPpbZPZdAh/m6lCS0cVXnB/s7uwEgtSsObgaEvqm4Saam1Yj+7Bcq5xrVSotL4CHjlDNYUcaCA0GLJWsuo5G7L5fOXUfKk=
