@@ -20,7 +20,7 @@ test_requirements = [ ]
 setup(
     name='menu_backend',
     description="Backend de gestion de menu",
-    version='0.2.7',
+    version='0.2.8',
     author="Adrien VIDOT",
     author_email='adrien.vidot@gmail.com',
     install_requires=requirements,
