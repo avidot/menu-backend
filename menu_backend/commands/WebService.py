@@ -62,4 +62,4 @@ def manageMenu(menuDay, menuMeal):
 @click.command()
 def startWebService():
 	click.echo("Start WebService")
-	app.run(debug=True)
+	app.run()
