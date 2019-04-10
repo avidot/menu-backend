@@ -6,8 +6,8 @@ menu-backend
 .. image:: https://img.shields.io/pypi/v/menu_backend.svg
         :target: https://pypi.python.org/pypi/menu_backend
 
-.. image:: https://img.shields.io/travis/avidot/menu_backend.svg
-        :target: https://travis-ci.org/avidot/menu_backend
+.. image:: https://travis-ci.com/avidot/menu-backend.svg
+    :target: https://travis-ci.com/avidot/menu-backend
 
 .. image:: https://readthedocs.org/projects/menu-backend/badge/?version=latest
         :target: https://menu-backend.readthedocs.io/en/latest/?badge=latest
