@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-import json
 from database.DatabaseEngine import db
 
 class Recipe(db.Model):

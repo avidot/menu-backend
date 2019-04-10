@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 import click
 import logging
 from commands.InstallDb import manageDb

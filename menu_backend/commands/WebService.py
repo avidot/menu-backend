@@ -5,7 +5,6 @@ import click
 import json
 from flask import request, Response
 from utils.commons import app
-from database.DatabaseEngine import db
 from model.Menu import Menu
 from model.Recipe import Recipe
 from database.RecipeController import addRecipe, deleteRecipe, updateRecipe
