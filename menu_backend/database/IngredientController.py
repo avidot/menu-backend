@@ -1,9 +1,9 @@
 """ Igredient Controller : Manage storage function for Ingredient """
 # -*- coding: utf-8 -*-
 
-from database.DatabaseEngine import db
-from model.Ingredient import Ingredient
-from model.IngredientCategoryEnum import IngredientCategoryEnum
+from menu_backend.database.DatabaseEngine import db
+from menu_backend.model.Ingredient import Ingredient
+from menu_backend.model.IngredientCategoryEnum import IngredientCategoryEnum
 
 def getIngredient(ingredientName):
 	return Ingredient.query.filter_by(name=ingredientName).first()

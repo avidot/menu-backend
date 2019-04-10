@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 
-from database.DatabaseEngine import db
-from model.DayEnum import DayEnum
-from model.MealEnum import MealEnum
+from menu_backend.database.DatabaseEngine import db
+from menu_backend.model.DayEnum import DayEnum
+from menu_backend.model.MealEnum import MealEnum
 
 class Menu(db.Model):
 	__tablename__ = 'menus'

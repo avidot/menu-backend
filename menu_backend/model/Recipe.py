@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from database.DatabaseEngine import db
+from menu_backend.database.DatabaseEngine import db
 
 class Recipe(db.Model):
 	__tablename__ = 'recipes'

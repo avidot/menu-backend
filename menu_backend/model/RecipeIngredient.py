@@ -1,5 +1,5 @@
-from database.DatabaseEngine import db
-from model.UnitEnum import UnitEnum
+from menu_backend.database.DatabaseEngine import db
+from menu_backend.model.UnitEnum import UnitEnum
 
 class RecipeIngredient(db.Model):
 	__tablename__ = 'recipes_ingredients'

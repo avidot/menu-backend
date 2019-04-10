@@ -1,10 +1,10 @@
 """ Menu Controller : Manage storage function for Menu """
 # -*- coding: utf-8 -*-
 
-from database.DatabaseEngine import db
-from model.Menu import Menu
-from model.DayEnum import DayEnum
-from model.MealEnum import MealEnum
+from menu_backend.database.DatabaseEngine import db
+from menu_backend.model.Menu import Menu
+from menu_backend.model.DayEnum import DayEnum
+from menu_backend.model.MealEnum import MealEnum
 
 def addMenu(menuJson):
 	menu = Menu(day=DayEnum(menuJson["day"]),meal=MealEnum(menuJson["meal"]),

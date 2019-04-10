@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import click
-from database.DatabaseEngine import db
-from model.Menu import Menu
-from model.Recipe import Recipe
-from model.Ingredient import Ingredient
-from model.RecipeIngredient import RecipeIngredient
+from menu_backend.database.DatabaseEngine import db
+from menu_backend.model.Menu import Menu
+from menu_backend.model.Recipe import Recipe
+from menu_backend.model.Ingredient import Ingredient
+from menu_backend.model.RecipeIngredient import RecipeIngredient
 
 
 @click.group()

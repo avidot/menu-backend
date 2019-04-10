@@ -1,11 +1,11 @@
 """ Recipe Controller : Manage storage function for Recipe """
 # -*- coding: utf-8 -*-
 
-from database.DatabaseEngine import db
-from model.Recipe import Recipe
-from model.RecipeIngredient import RecipeIngredient
-from model.UnitEnum import UnitEnum
-from database.IngredientController import addIngredient, getIngredient
+from menu_backend.model.Recipe import Recipe
+from menu_backend.model.RecipeIngredient import RecipeIngredient
+from menu_backend.model.UnitEnum import UnitEnum
+from menu_backend.database.DatabaseEngine import db
+from menu_backend.database.IngredientController import addIngredient, getIngredient
 
 def addRecipe(recipeJson):
 	recipe = Recipe(name=recipeJson["name"])

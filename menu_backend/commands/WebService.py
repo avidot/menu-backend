@@ -4,11 +4,11 @@
 import click
 import json
 from flask import request, Response
-from utils.commons import app
-from model.Menu import Menu
-from model.Recipe import Recipe
-from database.RecipeController import addRecipe, deleteRecipe, updateRecipe
-from database.MenuController import addMenu, deleteMenu, updateMenu
+from menu_backend.utils.commons import app
+from menu_backend.model.Menu import Menu
+from menu_backend.model.Recipe import Recipe
+from menu_backend.database.RecipeController import addRecipe, deleteRecipe, updateRecipe
+from menu_backend.database.MenuController import addMenu, deleteMenu, updateMenu
 
 
 @app.route('/recipes', methods=['GET', 'POST'])

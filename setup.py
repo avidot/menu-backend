@@ -18,8 +18,22 @@ setup_requirements = [ ]
 test_requirements = [ ]
 
 setup(
+    name='menu_backend',
+    description="Backend de gestion de menu",
+    version='0.2.7',
     author="Adrien VIDOT",
     author_email='adrien.vidot@gmail.com',
+    install_requires=requirements,
+    license="MIT license",
+    long_description=readme + '\n\n' + history,
+    keywords='menu_backend',
+    packages = ['menu_backend', 'menu_backend/commands', 'menu_backend/database', 'menu_backend/model', 'menu_backend/utils'],
+    include_package_data=True,
+    #packages=find_packages(),
+    setup_requires=setup_requirements,
+    tests_require=test_requirements,
+    url='https://github.com/avidot/menu_backend',
+    zip_safe=False,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -33,23 +47,5 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description="Backend de gestion de menu",
-    entry_points={
-        'console_scripts': [
-            'menu_backend=menu_backend.cli:main',
-        ],
-    },
-    install_requires=requirements,
-    license="MIT license",
-    long_description=readme + '\n\n' + history,
-    include_package_data=True,
-    keywords='menu_backend',
-    name='menu_backend',
-    packages=find_packages(include=['menu_backend']),
-    setup_requires=setup_requirements,
-    test_suite='tests',
-    tests_require=test_requirements,
-    url='https://github.com/avidot/menu_backend',
-    version='0.2.7',
-    zip_safe=False,
+    test_suite='tests'
 )
