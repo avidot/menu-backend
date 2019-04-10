@@ -7,7 +7,7 @@ from model.DayEnum import DayEnum
 from model.MealEnum import MealEnum
 
 def addMenu(menuJson):
-	menu = Menu(day=DayEnum(menuJson["day"]),meal=MealEnum(menuJson["meal"]), 
+	menu = Menu(day=DayEnum(menuJson["day"]),meal=MealEnum(menuJson["meal"]),
 		recipe_name=menuJson["recipeName"])
 	db.session.add(menu)
 	db.session.commit()

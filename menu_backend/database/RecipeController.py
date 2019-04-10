@@ -14,7 +14,7 @@ def addRecipe(recipeJson):
 		newIngredient = getIngredient(ingredient["name"])
 		if not newIngredient:
 			newIngredient = addIngredient(ingredient)
-		recipeIngredientLink = RecipeIngredient(recipe_name=recipe.name,ingredient_name=newIngredient.name, 
+		recipeIngredientLink = RecipeIngredient(recipe_name=recipe.name,ingredient_name=newIngredient.name,
 			amount=ingredient["amount"], unit=UnitEnum(ingredient["unit"]))
 		db.session.add(recipeIngredientLink)
 	db.session.commit()
@@ -31,7 +31,7 @@ def updateRecipe(recipeName, recipeJson):
 			newIngredient = addIngredient(ingredient)
 		recipeIngredientLink = RecipeIngredient.query.filter_by(recipe_name=recipeToManage.name,ingredient_name=newIngredient.name).first()
 		if not recipeIngredientLink:
-			recipeIngredientLink = RecipeIngredient(recipe_name=recipeToManage.name,ingredient_name=newIngredient.name, 
+			recipeIngredientLink = RecipeIngredient(recipe_name=recipeToManage.name,ingredient_name=newIngredient.name,
 				amount=ingredient["amount"], unit=UnitEnum(ingredient["unit"]))
 			db.session.add(recipeIngredientLink)
 		else :
