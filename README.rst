@@ -35,3 +35,8 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+.. image:: https://api.codacy.com/project/badge/Grade/7b80f4b211cc40a68ef11c8f83093631
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/adrien-vidot/menu-backend?utm_source=github.com&utm_medium=referral&utm_content=avidot/menu-backend&utm_campaign=Badge_Grade_Settings
