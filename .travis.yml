@@ -8,7 +8,6 @@ env:
 
 install:
   - pip install -r requirements_dev.txt
-  - ls -l /home/travis/virtualenv/python3.7-dev/lib/python3.7/site-packages/
 
 script: tox -e ${TOXENV}
 
