@@ -29,7 +29,7 @@ Backend de gestion de menu
 Features
 --------
 
-* TODO
+* CRUD managing menus and recipes
 
 Credits
 -------
