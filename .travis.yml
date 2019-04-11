@@ -9,7 +9,10 @@ env:
 install:
   - pip install -r requirements_dev.txt
 
-script: tox -e ${TOXENV}
+script:
+  - tox -e ${TOXENV}
+  - coverage xml
+  - python-codacy-coverage -r coverage.xml
 
 deploy:
   - provider: pypi
