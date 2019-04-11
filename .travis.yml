@@ -11,6 +11,7 @@ install:
 
 script:
   - tox -e ${TOXENV}
+  - coverage run --source menu_backend setup.py test
   - coverage xml
   - python-codacy-coverage -r coverage.xml
 
