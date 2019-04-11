@@ -8,6 +8,8 @@ class Recipe(db.Model):
 	ingredients = db.relationship('Ingredient', secondary="recipes_ingredients",
         backref=db.backref('recipes', lazy=True))
 
+	recipe_link = []
+
 	def getRecipeDict(self):
 		recipe = {}
 		recipe["name"] = self.name
